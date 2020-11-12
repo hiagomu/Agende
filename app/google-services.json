@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "100006189429",
+    "firebase_url": "https://agende-ac639.firebaseio.com",
+    "project_id": "agende-ac639",
+    "storage_bucket": "agende-ac639.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100006189429:android:fbed90a8e79e08300b1b3c",
+        "android_client_info": {
+          "package_name": "com.example.loginactivity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "100006189429-hosp23lu1oq2o464qpnicrk12bc6k1a5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfdOszqPawlvb6pHe2hTa34s_7NLrATXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "100006189429-hosp23lu1oq2o464qpnicrk12bc6k1a5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
