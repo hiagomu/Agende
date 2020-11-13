@@ -39,21 +39,6 @@
         app:layout_constraintTop_toBottomOf="@+id/loginLoginButton" />
 
     <EditText
-        android:id="@+id/passLoginEditTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Senha"
-        android:inputType="textPersonName"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#BFFFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/emailLoginEditTxt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/emailLoginEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/emailLoginEditTxt" />
-
-    <EditText
         android:id="@+id/emailLoginEditTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +50,7 @@
         android:textColorHint="#BFFFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@+id/perfilLoginImgView" />
 
     <Button
         android:id="@+id/loginLoginButton"
@@ -73,9 +58,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Entrar"
+        android:textColor="#FFFFFF"
         app:backgroundTint="#594A40"
         app:layout_constraintEnd_toEndOf="@+id/passLoginEditTxt"
-        app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="@+id/passLoginEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/passLoginEditTxt" />
 
@@ -91,7 +76,7 @@
         app:layout_constraintTop_toBottomOf="@+id/esqueceLoginTxtView" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/perfilLoginImgView"
         android:layout_width="81dp"
         android:layout_height="72dp"
         android:layout_marginTop="32dp"
@@ -99,5 +84,20 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/passLoginEditTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#BFFFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/emailLoginEditTxt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailLoginEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/emailLoginEditTxt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
