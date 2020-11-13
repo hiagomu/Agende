@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView esqueceuLoginTxt;
     private TextView cadastroLoginTxt;
     private FirebaseAuth mAuth;
-    private static final String TAG = "Erro";
+    private static final String TAG = "CadastroActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         carregaCampos();
         goToCadastro();
+        login();
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateUI(FirebaseAuth.getInstance().getCurrentUser());
     }
 
     private void goToCadastro() {
@@ -87,8 +92,6 @@ public class MainActivity extends AppCompatActivity {
                                             Toast.LENGTH_SHORT).show();
                                     updateUI(null);
                                 }
-
-                                // ...
                             }
                         });
             }
