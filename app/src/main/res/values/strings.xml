@@ -18,6 +18,9 @@
     <string name="menu_metas">Metas</string>
     <string name="menu_config">Configurações</string>
 
+    //ContentString Description
+    <string name="content_description_fab_metas">Botão float: criar uma nova tarefas com aoção de barra de tarefas</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
