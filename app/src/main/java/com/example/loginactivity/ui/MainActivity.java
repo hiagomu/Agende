@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 String email = emailLoginEdit.getText().toString();
                 String password = passLoginEdit.getText().toString();
 

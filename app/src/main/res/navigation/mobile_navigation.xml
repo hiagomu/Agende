@@ -3,23 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@id/navHome">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.example.loginactivity.ui.ui.home.HomeFragment"
+        android:id="@+id/navMetas"
+        android:name="com.example.loginactivity.NavMetas"
+        android:label="@string/menu_metas"
+        tools:layout="@layout/fragment_nav_metas" />
+    <fragment
+        android:id="@+id/navConfig"
+        android:name="com.example.loginactivity.NavConfig"
+        android:label="@string/menu_config"
+        tools:layout="@layout/fragment_nav_config" />
+    <fragment
+        android:id="@+id/navHome"
+        android:name="com.example.loginactivity.NavHome"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
+        tools:layout="@layout/fragment_nav_home" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.loginactivity.ui.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
+        android:id="@+id/navCalendar"
+        android:name="com.example.loginactivity.NavCalendar"
+        android:label="@string/menu_calendario"
+        tools:layout="@layout/fragment_nav_calendar" />
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.loginactivity.ui.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/navCategory"
+        android:name="com.example.loginactivity.NavCategory"
+        android:label="@string/menu_categoria"
+        tools:layout="@layout/fragment_nav_category" />
 </navigation>
