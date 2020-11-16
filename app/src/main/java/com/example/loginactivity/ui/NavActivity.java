@@ -60,6 +60,29 @@ public class NavActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.option_menu_logout:
+                logOut();
+                backToLogin();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void logOut() {
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    private void backToLogin() {
+        Intent intent = new Intent(NavActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)

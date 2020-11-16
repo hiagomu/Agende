@@ -50,32 +50,58 @@ public class CadastroActivity extends AppCompatActivity {
         cadastraCadastroBtn = findViewById(R.id.cadastraCadastroBtn);
     }
 
+    private boolean validarCadastro(String nome, String email, String senha, String confSenha) {
+        if (nome.isEmpty()) {
+            nomeCadastroEditTxt.setError("Insira o nome");
+            return false;
+        }
+        if (email.isEmpty()) {
+            emailCadastroEditTxt.setError("Insira o email");
+            return false;
+        }
+        if (senha.isEmpty()) {
+            senhaCadastroEditTxt.setError("Insira a senha");
+            return false;
+        }
+        if (confSenha != senha) {
+            confSenhaCadastroEditTxt.setError("Insira a senha corretamente");
+            return false;
+        }
+        return true;
+    }
+
     private void criaUsuario() {
         cadastraCadastroBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                String nome = nomeCadastroEditTxt.getText().toString();
                 String email = emailCadastroEditTxt.getText().toString();
-                String password = senhaCadastroEditTxt.getText().toString();
+                String senha = senhaCadastroEditTxt.getText().toString();
+                String confSenha = confSenhaCadastroEditTxt.getText().toString();
 
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Log.d(TAG, "createUserWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
-                                    updateUI(user);
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(CadastroActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    updateUI(null);
+                if (validarCadastro(nome, email, senha, confSenha)) {
+                    mAuth.createUserWithEmailAndPassword(email, senha)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        // Sign in success, update UI with the signed-in user's information
+                                        Log.d(TAG, "createUserWithEmail:success");
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        updateUI(user);
+                                    } else {
+                                        // If sign in fails, display a message to the user.
+                                        Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                        Toast.makeText(CadastroActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                        updateUI(null);
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
+
+
             }
             private void updateUI (FirebaseUser user){
                 if (user != null) {
