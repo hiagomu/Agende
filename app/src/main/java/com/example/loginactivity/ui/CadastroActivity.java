@@ -18,10 +18,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class CadastroActivity extends AppCompatActivity {
 
-    private ImageView fotoCadastroImgView;
     private EditText nomeCadastroEditTxt;
     private EditText emailCadastroEditTxt;
     private EditText senhaCadastroEditTxt;
@@ -42,7 +42,6 @@ public class CadastroActivity extends AppCompatActivity {
     }
 
     private void carregaViews() {
-        fotoCadastroImgView = findViewById(R.id.fotoCadastroImgView);
         nomeCadastroEditTxt = findViewById(R.id.nomeCadastroEditTxt);
         emailCadastroEditTxt = findViewById(R.id.emailCadastroEditTxt);
         senhaCadastroEditTxt = findViewById(R.id.senhaCadastroEditTxt);
@@ -63,7 +62,7 @@ public class CadastroActivity extends AppCompatActivity {
             senhaCadastroEditTxt.setError("Insira a senha");
             return false;
         }
-        if (confSenha != senha) {
+        if (!confSenha.equals(senha)) {
             confSenhaCadastroEditTxt.setError("Insira a senha corretamente");
             return false;
         }
@@ -89,6 +88,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         // Sign in success, update UI with the signed-in user's information
                                         Log.d(TAG, "createUserWithEmail:success");
                                         FirebaseUser user = mAuth.getCurrentUser();
+                                        inserirNome(user);
                                         updateUI(user);
                                     } else {
                                         // If sign in fails, display a message to the user.
@@ -103,6 +103,23 @@ public class CadastroActivity extends AppCompatActivity {
 
 
             }
+
+            private void inserirNome(FirebaseUser user) {
+                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                        .setDisplayName(nomeCadastroEditTxt.getText().toString())
+                        .build();
+
+                user.updateProfile(profileUpdates)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Log.d(TAG, "User profile updated.");
+                                }
+                            }
+                        });
+            }
+
             private void updateUI (FirebaseUser user){
                 if (user != null) {
                     Intent intent = new Intent(CadastroActivity.this, NavActivity.class);

@@ -118,6 +118,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private boolean validarEmail(String email) {
+        if (email.isEmpty()) {
+            emailLoginEdit.setError("Insira email para recuperação");
+            return false;
+        }
+        return true;
+    }
+
     private void recuperarSenha() {
         esqueceuLoginTxt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,15 +133,17 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 String emailAddress = emailLoginEdit.getText().toString();
 
-                auth.sendPasswordResetEmail(emailAddress)
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(MainActivity.this, "Email enviado!", Toast.LENGTH_LONG).show();
+                if (validarEmail(emailAddress)) {
+                    auth.sendPasswordResetEmail(emailAddress)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(MainActivity.this, "Email enviado com sucesso!", Toast.LENGTH_LONG).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
     }
