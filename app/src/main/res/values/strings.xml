@@ -18,8 +18,27 @@
     <string name="menu_metas">Metas</string>
     <string name="menu_config">Configurações</string>
 
-    //ContentString Description
-    <string name="content_description_fab_metas">Botão float: criar uma nova tarefas com aoção de barra de tarefas</string>
+    //Strings NavConfigure
+    <string name="configure_nav_geral">Geral</string>
+    <string name="configure_nav_sobre"> Sobre</string>
+    <string name="configure_nav_contato"> Entre em contato</string>
+    <string name="configure_nav_notify"> Notificações</string>
+    <string name="configure_nav_visual"> Visual e aparência</string>
+
+
+    <string name="configure_nav_sobre_info_y"> Y</string>
+    <string name="configure_nav_sobre_info_n"> N</string>
+    <string name="configure_nav_sobre_info_title"> Ajuda e feedback</string>
+
+    <string name="configure_nav_sobre_info">
+        Agende Tarefa 1.0. Sua própria agenda de tarefas.<b>
+        Gerêncie facilmente suas ações, temas e atendimento.</b>
+        Desenvolvido por Hiago e Jarbas.
+        Relatar erros e pedir novas funcionalidaes:
+        agende.senac@gmail.com</string>
+
+
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

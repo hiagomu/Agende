@@ -19,7 +19,14 @@
         android:id="@+id/navHome"
         android:name="com.example.loginactivity.NavHome"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_nav_home" />
+        tools:layout="@layout/fragment_nav_home" >
+        <action
+            android:id="@+id/action_navHome_to_navCategory"
+            app:destination="@id/navCategory" />
+        <action
+            android:id="@+id/action_navHome_to_navConfig"
+            app:destination="@id/navConfig" />
+    </fragment>
     <fragment
         android:id="@+id/navCalendar"
         android:name="com.example.loginactivity.NavCalendar"
