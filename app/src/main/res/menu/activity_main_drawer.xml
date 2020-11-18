@@ -25,6 +25,10 @@
             android:id="@+id/navConfig"
             android:icon="@drawable/ic_menu_config"
             android:title="@string/menu_config" />
+        <item
+            android:id="@+id/navCriarTarefa"
+            android:icon="@drawable/ic_add_tarefa"
+            android:title="Criar tarefa" />
     </group>
     <item
         android:id="@+id/menu_logout"

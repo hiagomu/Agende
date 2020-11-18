@@ -19,7 +19,11 @@
         android:id="@+id/navHome"
         android:name="com.example.loginactivity.NavHome"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_nav_home" />
+        tools:layout="@layout/fragment_nav_home" >
+        <action
+            android:id="@+id/action_navHome_to_navCriarTarefa"
+            app:destination="@id/navCriarTarefa" />
+    </fragment>
     <fragment
         android:id="@+id/navCalendar"
         android:name="com.example.loginactivity.NavCalendar"
@@ -30,4 +34,13 @@
         android:name="com.example.loginactivity.NavCategory"
         android:label="@string/menu_categoria"
         tools:layout="@layout/fragment_nav_category" />
+    <fragment
+        android:id="@+id/navCriarTarefa"
+        android:name="com.example.loginactivity.NavCriarTarefa"
+        android:label="Criar tarefa"
+        tools:layout="@layout/fragment_nav_criar_tarefa" >
+        <action
+            android:id="@+id/action_navCriarTarefa_to_navHome"
+            app:destination="@id/navHome" />
+    </fragment>
 </navigation>

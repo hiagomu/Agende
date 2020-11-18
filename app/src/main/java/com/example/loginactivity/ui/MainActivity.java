@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean validarLogin(String email, String password) {
-        if (emailLoginEdit.getText().toString().isEmpty()) {
+        if (email.isEmpty()) {
             emailLoginEdit.setError("Insira o email");
             return false;
         }

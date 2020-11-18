@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NavCriarTarefa">
+
+
+    <EditText
+        android:id="@+id/tituloNovaTarefaEditTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:hint="Adicionar um título"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/dataNovaTarefaEditTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Escolher uma data"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/tituloNovaTarefaEditTxt"
+        app:layout_constraintStart_toStartOf="@+id/tituloNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/tituloNovaTarefaEditTxt" />
+
+    <EditText
+        android:id="@+id/descNovaTarefaEditTxt"
+        android:layout_width="361dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Adicionar uma descrição"
+        android:inputType="textMultiLine"
+        android:lines="5"
+        app:layout_constraintEnd_toEndOf="@+id/categNovaTarefaEditTxt"
+        app:layout_constraintStart_toStartOf="@+id/categNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/categNovaTarefaEditTxt" />
+
+    <EditText
+        android:id="@+id/categNovaTarefaEditTxt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Escolher uma categoria"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/dataNovaTarefaEditTxt"
+        app:layout_constraintStart_toStartOf="@+id/dataNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/dataNovaTarefaEditTxt" />
+
+    <Button
+        android:id="@+id/salvarNovaTarefaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Salvar"
+        app:layout_constraintEnd_toEndOf="@+id/descNovaTarefaEditTxt"
+        app:layout_constraintStart_toStartOf="@+id/descNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/descNovaTarefaEditTxt" />
+</androidx.constraintlayout.widget.ConstraintLayout>
