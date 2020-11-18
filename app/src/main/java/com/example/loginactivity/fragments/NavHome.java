@@ -1,10 +1,11 @@
-package com.example.loginactivity;
+package com.example.loginactivity.fragments;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,8 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.loginactivity.R;
 import com.example.loginactivity.model.Tarefa;
 import com.example.loginactivity.ui.adapter.TarefaAdapter;
+import com.example.loginactivity.ui.helper.TarefaItemTouchHelper;
+import com.example.loginactivity.ui.listener.TarefaItemClickListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -83,6 +87,19 @@ public class NavHome extends Fragment {
 
         adapter = new TarefaAdapter(tarefaList, getContext());
         tarefaListRecycler.setAdapter(adapter);
+
+        adapter.setOnItemClickListener(new TarefaItemClickListener() {
+            @Override
+            public void itemClick(Tarefa tarefa) {
+//                Bundle bundle = new Bundle();
+//                bundle.putSerializable("amount", tarefa);
+                Navigation.findNavController(view).navigate(R.id.action_navHome_to_navCriarTarefa);
+            }
+        });
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new TarefaItemTouchHelper(adapter));
+        itemTouchHelper.attachToRecyclerView(tarefaListRecycler);
+
     }
 
     private void novaTarefa(View view) {

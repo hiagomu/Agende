@@ -1,4 +1,4 @@
-package com.example.loginactivity;
+package com.example.loginactivity.fragments;
 
 import android.os.Bundle;
 
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.loginactivity.R;
 import com.example.loginactivity.model.Tarefa;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

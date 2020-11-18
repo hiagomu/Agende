@@ -1,4 +1,4 @@
-package com.example.loginactivity;
+package com.example.loginactivity.fragments;
 
 import android.os.Bundle;
 
@@ -8,10 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class NavMetas extends Fragment {
+import com.example.loginactivity.R;
 
+public class NavConfig extends Fragment {
 
-    public NavMetas() {
+    public NavConfig() {
         // Required empty public constructor
     }
 
@@ -24,6 +25,6 @@ public class NavMetas extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_nav_metas, container, false);
+        return inflater.inflate(R.layout.fragment_nav_config, container, false);
     }
 }
