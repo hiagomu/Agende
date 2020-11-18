@@ -2,9 +2,11 @@ package com.example.loginactivity;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.loginactivity.model.Tarefa;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class NavCriarTarefa extends Fragment {
 
@@ -21,6 +27,7 @@ public class NavCriarTarefa extends Fragment {
     private EditText categNovaTarefa;
     private EditText descNovaTarefa;
     private Button salvarNovaTarefa;
+    private FirebaseFirestore db;
 
     private Tarefa tarefa;
 
@@ -49,18 +56,27 @@ public class NavCriarTarefa extends Fragment {
             @Override
             public void onClick(View v) {
                 extrairDados();
-                enviarDados();
                 goToNavHome(view);
             }
         });
     }
 
-    private void enviarDados() {
-        Bundle bundle = new Bundle();
-        bundle.put
-    }
-
     private void goToNavHome(View view) {
+        db = FirebaseFirestore.getInstance();
+        db.collection("tarefas")
+                .add(tarefa)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d("Sucesso ao adicionar", "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w("Falha ao adicionar", "Error adding document", e);
+                    }
+                });
         Navigation.findNavController(view).navigate(R.id.action_navCriarTarefa_to_navHome);
     }
 

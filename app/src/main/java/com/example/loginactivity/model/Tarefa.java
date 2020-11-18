@@ -1,16 +1,22 @@
 package com.example.loginactivity.model;
 
-public class Tarefa {
+import java.io.Serializable;
+
+public class Tarefa implements Serializable {
     private String titulo;
     private String data;
     private String descricao;
     private String categoria;
+    private String id;
 
     public Tarefa(String titulo, String data, String descricao, String categoria) {
         this.titulo = titulo;
         this.data = data;
         this.descricao = descricao;
         this.categoria = categoria;
+    }
+
+    public Tarefa() {
     }
 
     public String getTitulo() {
@@ -43,5 +49,13 @@ public class Tarefa {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
