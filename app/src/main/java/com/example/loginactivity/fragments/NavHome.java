@@ -107,7 +107,6 @@ public class NavHome extends Fragment {
                 bundle.putString("categoria", tarefa.getCategoria());
                 bundle.putString("descricao", tarefa.getDescricao());
 
-                //bundle.putSerializable("tarefa", tarefa);
 
                 Navigation.findNavController(view).navigate(R.id.action_navHome_to_navCriarTarefa, bundle);
             }

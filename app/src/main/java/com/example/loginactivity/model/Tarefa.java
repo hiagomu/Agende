@@ -9,11 +9,11 @@ public class Tarefa implements Serializable {
     private String categoria;
     private String id;
 
-    public Tarefa(String titulo, String data, String descricao, String categoria) {
+    public Tarefa(String titulo, String data, String categoria, String descricao) {
         this.titulo = titulo;
         this.data = data;
-        this.descricao = descricao;
         this.categoria = categoria;
+        this.descricao = descricao;
     }
 
     public Tarefa() {

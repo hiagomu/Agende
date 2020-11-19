@@ -69,7 +69,7 @@ public class NavCriarTarefa extends Fragment {
     }
 
     private void dadosEdicao(View view) {
-        Toast.makeText(getContext(), "Editar tarefa", Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), "Editar tarefa!", Toast.LENGTH_LONG).show();
 
         tituloNovaTarefa.setText(getArguments().getString("titulo"));
         dataNovaTarefa.setText(getArguments().getString("data"));
@@ -81,11 +81,13 @@ public class NavCriarTarefa extends Fragment {
         salvarNovaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                db = FirebaseFirestore.getInstance();
                 updateTarefa();
                 db.collection("tarefas").document(tarefa.getId()).set(tarefa);
+                Navigation.findNavController(view).navigate(R.id.action_navCriarTarefa_to_navHome);
             }
         });
-//        Navigation.findNavController(view).navigate(R.id.action_navCriarTarefa_to_navHome);
+
     }
 
     private void updateTarefa() {
