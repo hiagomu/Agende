@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class NavHome extends Fragment {
-    private Button button;
 
     public NavHome() {
         // Required empty public constructor
@@ -26,14 +25,6 @@ public class NavHome extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_nav_home, container, false);
-        button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(view).navigate(R.id.action_navHome_to_navConfig);
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_nav_home, container, false);
     }
 }
