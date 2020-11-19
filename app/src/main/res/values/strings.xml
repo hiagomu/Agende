@@ -11,12 +11,17 @@
     <string name="option_menu_config">Configurações</string>
     <string name="option_menu_logout">Sair</string>
 
+    Strings Id's mobile navigation
     //Strings Menu de gaveta
-    <string name="menu_home">Home</string>
-    <string name="menu_categoria">Categoria</string>
-    <string name="menu_calendario">Calendário</string>
-    <string name="menu_metas">Metas</string>
-    <string name="menu_config">Configurações</string>
+    <string name="menu_home_label">Home</string>
+    <string name="menu_categoria_label">Categoria</string>
+    <string name="menu_calendario_label">Calendário</string>
+    <string name="menu_metas_label">Metas</string>
+    <string name="menu_config_label">Configurações</string>
+    //Strings ConfigNavigation
+    <string name="config_visual_label">Visual e aparência</string>
+
+
 
     //Strings NavConfigure
     <string name="configure_nav_geral">Geral</string>
@@ -25,21 +30,30 @@
     <string name="configure_nav_notify"> Notificações</string>
     <string name="configure_nav_visual"> Visual e aparência</string>
 
-
-    <string name="configure_nav_sobre_info_y"> Y</string>
-    <string name="configure_nav_sobre_info_n"> N</string>
-    <string name="configure_nav_sobre_info_title"> Ajuda e feedback</string>
-
+    //Strings e Alertas
+    Alerta
+    <string name="alerta_cancelar">Cancelar</string>
+    <string name="alerta_selecionar">Selecionar</string>
+    Sobre
+    <string name="alerta_fechar">Fechar</string>
+    <string name="configure_alerta_nav_sobre_info_title"> Ajuda e feedback</string>
     <string name="configure_nav_sobre_info">
-        Agende Tarefa 1.0. Sua própria agenda de tarefas.<b>
-        Gerêncie facilmente suas ações, temas e atendimento.</b>
-        Desenvolvido por Hiago e Jarbas.
-        Relatar erros e pedir novas funcionalidaes:
+        Agende Tarefa 1.0.\n
+        Sua própria agenda de tarefas.\n
+        Gerêncie facilmente suas ações,\n
+        temas e atendimento.\n
+        Desenvolvido por Hiago e Jarbas.\n
+        Relatar erros e pedir novas\n
+        funcionalidaes:\n
         agende.senac@gmail.com</string>
-
-
+    Visual
+    <string name="configure_alerta_visual_info_title"> Você quer aplicar este tema?</string>
+    <string name="configure_alerta_visual_info">O aplicativo pode fechar ou reiniciar</string>
+    <string name="configure_visual_primary_theme">Padrão</string>
+    <string name="configure_visual_secondary_theme">Laranja</string>
+    <string name="configure_visual_tertiary_theme">Verde</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">New fragment</string>
 </resources>

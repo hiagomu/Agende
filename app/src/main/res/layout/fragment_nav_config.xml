@@ -5,8 +5,7 @@
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavConfig"
-    android:background="@color/teal_700">
+    tools:context=".NavConfig">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -24,14 +23,14 @@
             android:id="@+id/configureTextGeral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:drawableLeft="@drawable/ic_menu_config"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:text="@string/configure_nav_geral"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:clickable="true"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/ConfigureTextNotify"
@@ -73,14 +72,14 @@
             android:id="@+id/configureTextSobre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
             android:drawableLeft="@drawable/ic_config_sobre"
             android:drawablePadding="10dp"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:text="@string/configure_nav_sobre"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:clickable="true"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 

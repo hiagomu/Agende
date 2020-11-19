@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout4"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfigVisual">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textVisualPadrao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_config_visual_padrao"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/configure_visual_primary_theme"
+            android:textColor="@color/primaryColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textVisualLaranja"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_config_visual_laranja"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/configure_visual_secondary_theme"
+            android:textColor="@color/secondaryColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textVisualVerde"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_config_visual_verde"
+            android:drawablePadding="20dp"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/configure_visual_tertiary_theme"
+            android:textColor="@color/tertiaryColor"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
