@@ -27,7 +27,6 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.ViewHolder
     private Context context;
     private TarefaItemClickListener onItemClickListener;
     private AlertDialog alerta;
-    private boolean manterOuRemover;
 
     public TarefaAdapter(List<Tarefa> tarefas, Context context) {
         this.tarefas = tarefas;
@@ -83,20 +82,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.ViewHolder
         this.onItemClickListener = tarefaItemClickListener;
     }
 
-    public void removerTarefa(int adapterPosition) {
-        alertarAcao();
-        if (manterOuRemover){
-            Tarefa tarefa = tarefas.get(adapterPosition);
-            FirebaseFirestore.getInstance()
-                    .collection("tarefas")
-                    .document(tarefa.getId())
-                    .delete();
-            tarefas.remove(adapterPosition);
-            notifyItemRemoved(adapterPosition);
-        }
-    }
-
-    private void alertarAcao() {
+    public void alertarAcao(int adapterPosition, RecyclerView.Adapter adapter) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Remover tarefa");
         builder.setMessage("Deseja remover a tarefa?");
@@ -104,17 +90,31 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.ViewHolder
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(context, "Removido", Toast.LENGTH_LONG).show();
-                manterOuRemover = true;
+                removerTarefa(adapterPosition);
+                adapter.notifyDataSetChanged();
             }
         });
         builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                manterOuRemover = false;
+                adapter.notifyDataSetChanged();
+                return;
             }
         });
 
         alerta = builder.create();
         alerta.show();
     }
+
+
+    private void removerTarefa(int adapterPosition) {
+        Tarefa tarefa = tarefas.get(adapterPosition);
+        FirebaseFirestore.getInstance()
+                .collection("tarefas")
+                .document(tarefa.getId())
+                .delete();
+        tarefas.remove(adapterPosition);
+        notifyItemRemoved(adapterPosition);
+    }
+
 }

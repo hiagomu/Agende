@@ -30,6 +30,8 @@ public class NavCriarTarefa extends Fragment {
     private Button salvarNovaTarefa;
     private FirebaseFirestore db;
 
+    private String id;
+
     private Tarefa tarefa;
 
     public NavCriarTarefa() {
@@ -46,7 +48,11 @@ public class NavCriarTarefa extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_criar_tarefa, container, false);
         carregarCampos(view);
-        salvarTarefa(view);
+        if (getArguments() != null) {
+            dadosEdicao(view);
+        } else {
+            salvarTarefa(view);
+        }
 
         return view;
     }
@@ -60,6 +66,38 @@ public class NavCriarTarefa extends Fragment {
                 goToNavHome(view);
             }
         });
+    }
+
+    private void dadosEdicao(View view) {
+        Toast.makeText(getContext(), "Editar tarefa", Toast.LENGTH_LONG).show();
+
+        tituloNovaTarefa.setText(getArguments().getString("titulo"));
+        dataNovaTarefa.setText(getArguments().getString("data"));
+        categNovaTarefa.setText(getArguments().getString("categoria"));
+        descNovaTarefa.setText(getArguments().getString("descricao"));
+
+
+
+        salvarNovaTarefa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateTarefa();
+                db.collection("tarefas").document(tarefa.getId()).set(tarefa);
+            }
+        });
+//        Navigation.findNavController(view).navigate(R.id.action_navCriarTarefa_to_navHome);
+    }
+
+    private void updateTarefa() {
+        String titulo = tituloNovaTarefa.getText().toString();
+        String data = dataNovaTarefa.getText().toString();
+        String categoria = categNovaTarefa.getText().toString();
+        String descricao = descNovaTarefa.getText().toString();
+        String id = getArguments().getString("id");
+
+        //Preciso pegar a tarefa clicada no NavHome
+        tarefa = new Tarefa(titulo, data, categoria, descricao);
+        tarefa.setId(id);
     }
 
     private void goToNavHome(View view) {

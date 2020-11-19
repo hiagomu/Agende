@@ -28,6 +28,6 @@ public class TarefaItemTouchHelper extends ItemTouchHelper.Callback {
 
     @Override
     public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-        adapter.removerTarefa(viewHolder.getAdapterPosition());
+        adapter.alertarAcao(viewHolder.getAdapterPosition(), adapter);
     }
 }

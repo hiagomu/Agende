@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.loginactivity.R;
@@ -37,6 +39,12 @@ public class NavHome extends Fragment {
     private TarefaAdapter adapter;
     private int posicaoItemClick;
     private List<Tarefa> tarefaList;
+
+    private EditText tituloForm;
+    private EditText dataForm;
+    private EditText categoriaForm;
+    private EditText descricaoForm;
+    private Button salvarForm;
 
     public NavHome() {
         // Required empty public constructor
@@ -91,9 +99,17 @@ public class NavHome extends Fragment {
         adapter.setOnItemClickListener(new TarefaItemClickListener() {
             @Override
             public void itemClick(Tarefa tarefa) {
-//                Bundle bundle = new Bundle();
-//                bundle.putSerializable("amount", tarefa);
-                Navigation.findNavController(view).navigate(R.id.action_navHome_to_navCriarTarefa);
+                Bundle bundle = new Bundle();
+
+                bundle.putString("id", tarefa.getId());
+                bundle.putString("titulo", tarefa.getTitulo());
+                bundle.putString("data", tarefa.getData());
+                bundle.putString("categoria", tarefa.getCategoria());
+                bundle.putString("descricao", tarefa.getDescricao());
+
+                //bundle.putSerializable("tarefa", tarefa);
+
+                Navigation.findNavController(view).navigate(R.id.action_navHome_to_navCriarTarefa, bundle);
             }
         });
 
@@ -101,6 +117,8 @@ public class NavHome extends Fragment {
         itemTouchHelper.attachToRecyclerView(tarefaListRecycler);
 
     }
+
+
 
     private void novaTarefa(View view) {
         FloatingActionButton button = view.findViewById(R.id.addHomeFab);
