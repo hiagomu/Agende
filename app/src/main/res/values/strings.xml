@@ -38,7 +38,7 @@
     <string name="alerta_fechar">Fechar</string>
     <string name="configure_alerta_nav_sobre_info_title"> Ajuda e feedback</string>
     <string name="configure_nav_sobre_info">
-        Agende Tarefa 1.0.\n
+        <h1>Agende Tarefa 1.0</h1>\n
         Sua própria agenda de tarefas.\n
         Gerêncie facilmente suas ações,\n
         temas e atendimento.\n
