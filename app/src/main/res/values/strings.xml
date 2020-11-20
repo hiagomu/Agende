@@ -22,7 +22,6 @@
     <string name="config_visual_label">Visual e aparência</string>
 
 
-
     //Strings NavConfigure
     <string name="configure_nav_geral">Geral</string>
     <string name="configure_nav_sobre"> Sobre</string>
@@ -38,22 +37,26 @@
     <string name="alerta_fechar">Fechar</string>
     <string name="configure_alerta_nav_sobre_info_title"> Ajuda e feedback</string>
     <string name="configure_nav_sobre_info">
-        <h1>Agende Tarefa 1.0</h1>\n
+        <b>Agende Tarefa 1.0</b>\n
         Sua própria agenda de tarefas.\n
         Gerêncie facilmente suas ações,\n
         temas e atendimento.\n
         Desenvolvido por Hiago e Jarbas.\n
         Relatar erros e pedir novas\n
         funcionalidaes:\n
-        agende.senac@gmail.com</string>
+        <b>agende.senac@gmail.com</b></string>
     Visual
     <string name="configure_alerta_visual_info_title"> Você quer aplicar este tema?</string>
     <string name="configure_alerta_visual_info">O aplicativo pode fechar ou reiniciar</string>
     <string name="configure_visual_primary_theme">Padrão</string>
     <string name="configure_visual_secondary_theme">Laranja</string>
     <string name="configure_visual_tertiary_theme">Verde</string>
+    <string name="configure_visual_quaternary_theme">Marrom</string>
 
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">New fragment</string>
+
+    //String mode: itálico > i
+    mode negrito(bold) > b
 </resources>

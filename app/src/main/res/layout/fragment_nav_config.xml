@@ -23,14 +23,16 @@
             android:id="@+id/configureTextGeral"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
             android:drawableLeft="@drawable/ic_menu_config"
             android:drawablePadding="20dp"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:text="@string/configure_nav_geral"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/ConfigureTextNotify"
@@ -42,7 +44,10 @@
             android:padding="5dp"
             android:text="@string/configure_nav_notify"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/configureTextVisual"
@@ -54,7 +59,10 @@
             android:padding="5dp"
             android:text="@string/configure_nav_visual"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/configureTextContato"
@@ -66,15 +74,20 @@
             android:padding="5dp"
             android:text="@string/configure_nav_contato"
             android:textSize="24sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/configureTextSobre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:drawableLeft="@drawable/ic_config_sobre"
             android:drawablePadding="20dp"
+            android:focusable="true"
             android:gravity="center_vertical"
             android:padding="5dp"
             android:text="@string/configure_nav_sobre"

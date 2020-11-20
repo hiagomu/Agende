@@ -7,6 +7,8 @@
     <color name="secondaryColorBlack">#AF3E1A</color>
     <color name="tertiaryColor">#A7FFEB</color>
     <color name="tertiaryColorBlack">#FF018786</color>
+    <color name="quaternaryColor">#FF79685C</color>
+    <color name="quaternaryColorBlack">#574A41</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

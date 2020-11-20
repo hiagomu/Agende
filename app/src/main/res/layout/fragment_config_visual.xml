@@ -27,7 +27,10 @@
             android:text="@string/configure_visual_primary_theme"
             android:textColor="@color/primaryColor"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/textVisualLaranja"
@@ -40,7 +43,10 @@
             android:text="@string/configure_visual_secondary_theme"
             android:textColor="@color/secondaryColor"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <TextView
             android:id="@+id/textVisualVerde"
@@ -52,6 +58,25 @@
             android:padding="5dp"
             android:text="@string/configure_visual_tertiary_theme"
             android:textColor="@color/tertiaryColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/textVisualMarrom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:drawableLeft="@drawable/ic_config_visual_marrom"
+            android:drawablePadding="20dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:padding="5dp"
+            android:text="@string/configure_visual_quaternary_theme"
+            android:textColor="@color/quaternaryColor"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>

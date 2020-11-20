@@ -3,10 +3,13 @@ package com.example.loginactivity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.text.style.BackgroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,7 @@ public class ConfigVisual extends Fragment {
     private TextView textPadrao;
     private TextView textLaranja;
     private TextView textVerde;
+    private TextView textMarrom;
     private Context context;
     private AlertDialog alerta;
 
@@ -68,6 +72,12 @@ public class ConfigVisual extends Fragment {
                 alertaVisual();
             }
         });
+        textMarrom.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertaVisual();
+                }
+        });
     }
 
     private void alertaVisual(){
@@ -94,5 +104,7 @@ public class ConfigVisual extends Fragment {
         textPadrao = view.findViewById(R.id.textVisualPadrao);
         textLaranja = view.findViewById(R.id.textVisualLaranja);
         textVerde = view.findViewById(R.id.textVisualVerde);
+        textMarrom = view.findViewById(R.id.textVisualMarrom);
+
     }
 }
