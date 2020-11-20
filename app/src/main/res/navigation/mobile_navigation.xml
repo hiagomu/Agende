@@ -8,17 +8,21 @@
     <fragment
         android:id="@+id/navMetas"
         android:name="com.example.loginactivity.fragments.NavMetas"
-        android:label="@string/menu_metas"
+        android:label="@string/menu_metas_label"
         tools:layout="@layout/fragment_nav_metas" />
     <fragment
         android:id="@+id/navConfig"
         android:name="com.example.loginactivity.fragments.NavConfig"
-        android:label="@string/menu_config"
-        tools:layout="@layout/fragment_nav_config" />
+        android:label="@string/menu_config_label"
+        tools:layout="@layout/fragment_nav_config" >
+        <action
+            android:id="@+id/action_navConfig_to_configVisual"
+            app:destination="@id/configVisual" />
+    </fragment>
     <fragment
         android:id="@+id/navHome"
         android:name="com.example.loginactivity.fragments.NavHome"
-        android:label="@string/menu_home"
+        android:label="@string/menu_home_label"
         tools:layout="@layout/fragment_nav_home" >
         <action
             android:id="@+id/action_navHome_to_navCriarTarefa"
@@ -27,12 +31,12 @@
     <fragment
         android:id="@+id/navCalendar"
         android:name="com.example.loginactivity.fragments.NavCalendar"
-        android:label="@string/menu_calendario"
+        android:label="@string/menu_calendario_label"
         tools:layout="@layout/fragment_nav_calendar" />
     <fragment
         android:id="@+id/navCategory"
         android:name="com.example.loginactivity.fragments.NavCategory"
-        android:label="@string/menu_categoria"
+        android:label="@string/menu_categoria_label"
         tools:layout="@layout/fragment_nav_category" />
     <fragment
         android:id="@+id/navCriarTarefa"
@@ -43,4 +47,9 @@
             android:id="@+id/action_navCriarTarefa_to_navHome"
             app:destination="@id/navHome" />
     </fragment>
+    <fragment
+        android:id="@+id/configVisual"
+        android:name="com.example.loginactivity.ConfigVisual"
+        android:label="@string/config_visual_label"
+        tools:layout="@layout/fragment_config_visual" />
 </navigation>
