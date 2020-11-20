@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginactivity.R;
@@ -26,8 +28,11 @@ import androidx.appcompat.widget.Toolbar;
 public class NavActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private TextView userNameTxtView;
+    private TextView emailTxtView;
     private FirebaseAuth mAuth;
     private String userName;
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,9 @@ public class NavActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+
+        View headerView = navigationView.getHeaderView(0);
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -47,12 +55,8 @@ public class NavActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        mostrarNomeEmail(headerView);
 
-        //Nome do usuário - Teste
-//        mAuth = FirebaseAuth.getInstance();
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        userName = user.getDisplayName().toString();
-//        Toast.makeText(NavActivity.this, "Olá, " + userName, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -72,6 +76,20 @@ public class NavActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void mostrarNomeEmail(View headerView) {
+        userNameTxtView = headerView.findViewById(R.id.userNameHeaderTxtView);
+        emailTxtView = headerView.findViewById(R.id.emailHeaderTxtView);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userName = user.getDisplayName();
+        userEmail = user.getEmail();
+
+
+        userNameTxtView.setText(userName);
+        emailTxtView.setText(userEmail);
     }
 
     private void logOut() {

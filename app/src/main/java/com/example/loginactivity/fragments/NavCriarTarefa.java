@@ -1,5 +1,6 @@
 package com.example.loginactivity.fragments;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,28 +12,34 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginactivity.R;
 import com.example.loginactivity.model.Tarefa;
+import com.example.loginactivity.ui.MainActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Calendar;
+
 public class NavCriarTarefa extends Fragment {
 
     private EditText tituloNovaTarefa;
-    private EditText dataNovaTarefa;
+    private TextView dataNovaTarefa;
     private EditText categNovaTarefa;
     private EditText descNovaTarefa;
     private Button salvarNovaTarefa;
+    private Button calendarioNovaTarefa;
     private FirebaseFirestore db;
-
     private String id;
-
     private Tarefa tarefa;
+    private Calendar c;
+    private DatePickerDialog dpd;
 
     public NavCriarTarefa() {
         // Required empty public constructor
@@ -48,6 +55,9 @@ public class NavCriarTarefa extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_criar_tarefa, container, false);
         carregarCampos(view);
+
+        mostrarCalendario();
+
         if (getArguments() != null) {
             dadosEdicao(view);
         } else {
@@ -58,12 +68,34 @@ public class NavCriarTarefa extends Fragment {
     }
 
 
+    private void mostrarCalendario() {
+        calendarioNovaTarefa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c = Calendar.getInstance();
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int month = c.get(Calendar.MONTH);
+                int year = c.get(Calendar.YEAR);
+
+                dpd = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        dataNovaTarefa.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                    }
+                }, day, month, year);
+                dpd.show();
+            }
+        });
+    }
+
     private void salvarTarefa(View view) {
         salvarNovaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                extrairDados();
-                goToNavHome(view);
+                if (validarForm()) {
+                    extrairDados();
+                    goToNavHome(view);
+                }
             }
         });
     }
@@ -122,26 +154,18 @@ public class NavCriarTarefa extends Fragment {
     }
 
     private void extrairDados() {
-        if (validarForm()) {
-            String title = tituloNovaTarefa.getText().toString();
-            String data = dataNovaTarefa.getText().toString();
-            String categoria = categNovaTarefa.getText().toString();
-            String descricao = descNovaTarefa.getText().toString();
+        String title = tituloNovaTarefa.getText().toString();
+        String data = dataNovaTarefa.getText().toString();
+        String categoria = categNovaTarefa.getText().toString();
+        String descricao = descNovaTarefa.getText().toString();
 
-            tarefa = new Tarefa(title, data, descricao, categoria);
-        }
-
+        tarefa = new Tarefa(title, data, categoria, descricao);
     }
 
     private boolean validarForm() {
         if (tituloNovaTarefa.getText().toString().isEmpty()) {
             tituloNovaTarefa.setError("Informe o título");
             tituloNovaTarefa.requestFocus();
-            return false;
-        }
-        if (dataNovaTarefa.getText().toString().isEmpty()) {
-            dataNovaTarefa.setError("Informe a data");
-            dataNovaTarefa.requestFocus();
             return false;
         }
         if (categNovaTarefa.getText().toString().isEmpty()) {
@@ -154,16 +178,22 @@ public class NavCriarTarefa extends Fragment {
             descNovaTarefa.requestFocus();
             return false;
         }
+        if (dataNovaTarefa.getText().toString().isEmpty()) {
+            dataNovaTarefa.setError("Informe a data");
+            dataNovaTarefa.requestFocus();
+            return false;
+        }
         return true;
     }
 
 
     private void carregarCampos(View view) {
         tituloNovaTarefa = view.findViewById(R.id.tituloNovaTarefaEditTxt);
-        dataNovaTarefa = view.findViewById(R.id.dataNovaTarefaEditTxt);
+        dataNovaTarefa = view.findViewById(R.id.dataNovaTarefaTxtView);
         categNovaTarefa = view.findViewById(R.id.categNovaTarefaEditTxt);
         descNovaTarefa = view.findViewById(R.id.descNovaTarefaEditTxt);
         salvarNovaTarefa = view.findViewById(R.id.salvarNovaTarefaButton);
+        calendarioNovaTarefa = view.findViewById(R.id.dataNovaTarefaButton);
     }
 
 
