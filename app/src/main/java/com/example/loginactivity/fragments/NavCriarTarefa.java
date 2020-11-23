@@ -47,6 +47,7 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
     private Calendar c;
     private DatePickerDialog dpd;
     private String categoria;
+    private int totalDias;
 
     public NavCriarTarefa() {
         // Required empty public constructor
@@ -88,6 +89,7 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         dataNovaTarefa.setText(dayOfMonth + "/" + (month+1) + "/" + year);
+                        totalDias = year*365 + (month+1)*30 + dayOfMonth;
                     }
                 }, day, month, year);
                 dpd.show();
@@ -113,6 +115,14 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
         tituloNovaTarefa.setText(getArguments().getString("titulo"));
         dataNovaTarefa.setText(getArguments().getString("data"));
         descNovaTarefa.setText(getArguments().getString("descricao"));
+        String categoria = getArguments().getString("categoria");
+
+        if (categoria.equals("Estudantil"))
+            categoriaNovaTarefaSpin.setSelection(0);
+        else if (categoria.equals("Doméstico"))
+            categoriaNovaTarefaSpin.setSelection(1);
+        else if (categoria.equals("Outro"))
+            categoriaNovaTarefaSpin.setSelection(2);
 
         salvarNovaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,7 +143,7 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
         String id = getArguments().getString("id");
 
         //Preciso pegar a tarefa clicada no NavHome
-        tarefa = new Tarefa(titulo, data, categoria, descricao);
+        tarefa = new Tarefa(titulo, data, categoria, descricao, totalDias);
         tarefa.setId(id);
     }
 
@@ -161,7 +171,7 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
         String data = dataNovaTarefa.getText().toString();
         String descricao = descNovaTarefa.getText().toString();
 
-        tarefa = new Tarefa(title, data, categoria, descricao);
+        tarefa = new Tarefa(title, data, categoria, descricao, totalDias);
     }
 
     private boolean validarForm() {
@@ -192,17 +202,20 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
         calendarioNovaTarefa = view.findViewById(R.id.dataNovaTarefaButton);
 
         //Select para input da categoria
-        Spinner spinner = view.findViewById(R.id.categNovaTarefaSpin);
+        categoriaNovaTarefaSpin = view.findViewById(R.id.categNovaTarefaSpin);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.categorias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        categoriaNovaTarefaSpin.setAdapter(adapter);
+        categoriaNovaTarefaSpin.setOnItemSelectedListener(this);
     }
 
     // Métodos para pegar item selecionado na lista
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         categoria = parent.getItemAtPosition(position).toString();
+        if (categoria == "Outro") {
+
+        }
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {

@@ -29,8 +29,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.type.Date;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.List;
 
 public class NavHome extends Fragment {
@@ -46,6 +49,9 @@ public class NavHome extends Fragment {
     private EditText categoriaForm;
     private EditText descricaoForm;
     private Button salvarForm;
+
+    private int diaDeHoje = Calendar.getInstance().get(Calendar.YEAR)*365 + Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + (Calendar.getInstance().get(Calendar.MONTH)+1)*30;
+    private int tarefasHoje;
 
     public NavHome() {
         // Required empty public constructor
@@ -80,7 +86,20 @@ public class NavHome extends Fragment {
                                 Tarefa tarefa = document.toObject(Tarefa.class);
                                 tarefa.setId(document.getId());
                                 tarefaList.add(tarefa);
+                                //
+                                if (tarefa.getDias() == diaDeHoje) {
+                                    tarefasHoje++;
+                                }
                             }
+
+                            //Arrumar edição pois ela zera os dias da tarefa
+                            System.out.println(tarefasHoje);
+
+
+
+                            // Organizar tarefas pras mais recentes
+                            Collections.sort(tarefaList);
+
                             configuraRecycler(view);
                         } else {
                             Log.w("Falha", "Error getting documents.", task.getException());
