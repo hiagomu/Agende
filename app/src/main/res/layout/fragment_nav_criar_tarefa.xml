@@ -13,43 +13,30 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Adicionar um título"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/descNovaTarefaEditTxt"
-        android:layout_width="361dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:gravity="start|top"
         android:hint="Adicionar uma descrição"
         android:inputType="textMultiLine"
         android:lines="5"
-        app:layout_constraintEnd_toEndOf="@+id/categNovaTarefaEditTxt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/categNovaTarefaEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/categNovaTarefaEditTxt" />
-
-    <EditText
-        android:id="@+id/categNovaTarefaEditTxt"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Escolher uma categoria"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/tituloNovaTarefaEditTxt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tituloNovaTarefaEditTxt"
-        app:layout_constraintTop_toBottomOf="@+id/tituloNovaTarefaEditTxt" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/salvarNovaTarefaButton"
@@ -69,7 +56,7 @@
         android:layout_marginTop="16dp"
         android:text="Definir data"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descNovaTarefaEditTxt" />
+        app:layout_constraintTop_toBottomOf="@+id/categNovaTarefaSpin" />
 
     <TextView
         android:id="@+id/dataNovaTarefaTxtView"
@@ -83,4 +70,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dataNovaTarefaButton"
         app:layout_constraintTop_toTopOf="@+id/dataNovaTarefaButton" />
+
+    <Spinner
+        android:id="@+id/categNovaTarefaSpin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Categoria"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/descNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/descNovaTarefaEditTxt" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Título"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Descrição"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tituloNovaTarefaEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/tituloNovaTarefaEditTxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

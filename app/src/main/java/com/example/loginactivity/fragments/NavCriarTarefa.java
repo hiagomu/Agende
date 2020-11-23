@@ -11,23 +11,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginactivity.R;
 import com.example.loginactivity.model.Tarefa;
 import com.example.loginactivity.ui.MainActivity;
+import com.example.loginactivity.ui.NavActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 
-public class NavCriarTarefa extends Fragment {
+public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private EditText tituloNovaTarefa;
     private TextView dataNovaTarefa;
@@ -35,11 +40,13 @@ public class NavCriarTarefa extends Fragment {
     private EditText descNovaTarefa;
     private Button salvarNovaTarefa;
     private Button calendarioNovaTarefa;
+    private Spinner categoriaNovaTarefaSpin;
     private FirebaseFirestore db;
     private String id;
     private Tarefa tarefa;
     private Calendar c;
     private DatePickerDialog dpd;
+    private String categoria;
 
     public NavCriarTarefa() {
         // Required empty public constructor
@@ -105,17 +112,14 @@ public class NavCriarTarefa extends Fragment {
 
         tituloNovaTarefa.setText(getArguments().getString("titulo"));
         dataNovaTarefa.setText(getArguments().getString("data"));
-        categNovaTarefa.setText(getArguments().getString("categoria"));
         descNovaTarefa.setText(getArguments().getString("descricao"));
-
-
 
         salvarNovaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 db = FirebaseFirestore.getInstance();
                 updateTarefa();
-                db.collection("tarefas").document(tarefa.getId()).set(tarefa);
+                db.collection(FirebaseAuth.getInstance().getCurrentUser().getUid()).document(tarefa.getId()).set(tarefa);
                 Navigation.findNavController(view).navigate(R.id.action_navCriarTarefa_to_navHome);
             }
         });
@@ -125,7 +129,6 @@ public class NavCriarTarefa extends Fragment {
     private void updateTarefa() {
         String titulo = tituloNovaTarefa.getText().toString();
         String data = dataNovaTarefa.getText().toString();
-        String categoria = categNovaTarefa.getText().toString();
         String descricao = descNovaTarefa.getText().toString();
         String id = getArguments().getString("id");
 
@@ -136,7 +139,7 @@ public class NavCriarTarefa extends Fragment {
 
     private void goToNavHome(View view) {
         db = FirebaseFirestore.getInstance();
-        db.collection("tarefas")
+        db.collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .add(tarefa)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
@@ -156,7 +159,6 @@ public class NavCriarTarefa extends Fragment {
     private void extrairDados() {
         String title = tituloNovaTarefa.getText().toString();
         String data = dataNovaTarefa.getText().toString();
-        String categoria = categNovaTarefa.getText().toString();
         String descricao = descNovaTarefa.getText().toString();
 
         tarefa = new Tarefa(title, data, categoria, descricao);
@@ -166,11 +168,6 @@ public class NavCriarTarefa extends Fragment {
         if (tituloNovaTarefa.getText().toString().isEmpty()) {
             tituloNovaTarefa.setError("Informe o título");
             tituloNovaTarefa.requestFocus();
-            return false;
-        }
-        if (categNovaTarefa.getText().toString().isEmpty()) {
-            categNovaTarefa.setError("Informe a categoria");
-            categNovaTarefa.requestFocus();
             return false;
         }
         if (descNovaTarefa.getText().toString().isEmpty()) {
@@ -190,11 +187,25 @@ public class NavCriarTarefa extends Fragment {
     private void carregarCampos(View view) {
         tituloNovaTarefa = view.findViewById(R.id.tituloNovaTarefaEditTxt);
         dataNovaTarefa = view.findViewById(R.id.dataNovaTarefaTxtView);
-        categNovaTarefa = view.findViewById(R.id.categNovaTarefaEditTxt);
         descNovaTarefa = view.findViewById(R.id.descNovaTarefaEditTxt);
         salvarNovaTarefa = view.findViewById(R.id.salvarNovaTarefaButton);
         calendarioNovaTarefa = view.findViewById(R.id.dataNovaTarefaButton);
+
+        //Select para input da categoria
+        Spinner spinner = view.findViewById(R.id.categNovaTarefaSpin);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.categorias, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
+    // Métodos para pegar item selecionado na lista
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        categoria = parent.getItemAtPosition(position).toString();
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
+    }
 }

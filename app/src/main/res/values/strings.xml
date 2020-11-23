@@ -21,7 +21,12 @@
     //Strings ConfigNavigation
     <string name="config_visual_label">Visual e aparência</string>
 
-
+    //Strings NavCriarTarefa - Select Categoria
+    <string-array name="categorias">
+        <item>Estudantil</item>
+        <item>Doméstico</item>
+        <item>Outro</item>
+    </string-array>>
 
     //Strings NavConfigure
     <string name="configure_nav_geral">Geral</string>
