@@ -58,19 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categNovaTarefaSpin" />
 
-    <TextView
-        android:id="@+id/dataNovaTarefaTxtView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="center"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dataNovaTarefaButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/dataNovaTarefaButton"
-        app:layout_constraintTop_toTopOf="@+id/dataNovaTarefaButton" />
-
     <Spinner
         android:id="@+id/categNovaTarefaSpin"
         android:layout_width="0dp"
@@ -113,4 +100,59 @@
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tituloNovaTarefaEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/tituloNovaTarefaEditTxt" />
+
+    <TextView
+        android:id="@+id/diaNovaTarefaTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="20"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dataNovaTarefaButton"
+        app:layout_constraintStart_toEndOf="@+id/dataNovaTarefaButton"
+        app:layout_constraintTop_toTopOf="@+id/dataNovaTarefaButton" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="/"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/diaNovaTarefaTxtView"
+        app:layout_constraintStart_toEndOf="@+id/diaNovaTarefaTxtView"
+        app:layout_constraintTop_toTopOf="@+id/diaNovaTarefaTxtView" />
+
+    <TextView
+        android:id="@+id/mesNovaTarefaTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="10"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="/"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/mesNovaTarefaTxtView"
+        app:layout_constraintStart_toEndOf="@+id/mesNovaTarefaTxtView"
+        app:layout_constraintTop_toTopOf="@+id/mesNovaTarefaTxtView" />
+
+    <TextView
+        android:id="@+id/anoNovaTarefaTxtView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="2020"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7" />
 </androidx.constraintlayout.widget.ConstraintLayout>

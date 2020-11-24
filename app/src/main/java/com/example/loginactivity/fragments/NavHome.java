@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.loginactivity.R;
@@ -41,16 +42,10 @@ public class NavHome extends Fragment {
     private FirebaseFirestore db;
     private RecyclerView tarefaListRecycler;
     private TarefaAdapter adapter;
-    private int posicaoItemClick;
     private List<Tarefa> tarefaList;
+    private TextView tarefasHojeEditTxt;
 
-    private EditText tituloForm;
-    private EditText dataForm;
-    private EditText categoriaForm;
-    private EditText descricaoForm;
-    private Button salvarForm;
-
-    private int diaDeHoje = Calendar.getInstance().get(Calendar.YEAR)*365 + Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + (Calendar.getInstance().get(Calendar.MONTH)+1)*30;
+    private long diaDeHoje = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + (Calendar.getInstance().get(Calendar.MONTH)+1)*30 + (Calendar.getInstance().get(Calendar.YEAR))*365;
     private int tarefasHoje;
 
     public NavHome() {
@@ -86,17 +81,14 @@ public class NavHome extends Fragment {
                                 Tarefa tarefa = document.toObject(Tarefa.class);
                                 tarefa.setId(document.getId());
                                 tarefaList.add(tarefa);
-                                //
-                                if (tarefa.getDias() == diaDeHoje) {
+
+                                if (tarefa.allTimeThis() == diaDeHoje) {
                                     tarefasHoje++;
                                 }
                             }
 
-                            //Arrumar edição pois ela zera os dias da tarefa
-                            System.out.println(tarefasHoje);
-
-
-
+                            //Quantas tarefas tem no no dia
+                            configuraContador(view);
                             // Organizar tarefas pras mais recentes
                             Collections.sort(tarefaList);
 
@@ -106,6 +98,12 @@ public class NavHome extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void configuraContador(View view) {
+        tarefasHojeEditTxt = view.findViewById(R.id.tarefasHojeHomeTxtView);
+        tarefasHojeEditTxt.setText(Integer.toString(tarefasHoje));
+        tarefasHoje = 0;
     }
 
     private void configuraRecycler(View view) {
@@ -123,7 +121,9 @@ public class NavHome extends Fragment {
 
                 bundle.putString("id", tarefa.getId());
                 bundle.putString("titulo", tarefa.getTitulo());
-                bundle.putString("data", tarefa.getData());
+                bundle.putString("dia", Integer.toString(tarefa.getDia()));
+                bundle.putString("mes", Integer.toString(tarefa.getMes()));
+                bundle.putString("ano", Integer.toString(tarefa.getAno()));
                 bundle.putString("categoria", tarefa.getCategoria());
                 bundle.putString("descricao", tarefa.getDescricao());
 
@@ -136,8 +136,6 @@ public class NavHome extends Fragment {
         itemTouchHelper.attachToRecyclerView(tarefaListRecycler);
 
     }
-
-
 
     private void novaTarefa(View view) {
         FloatingActionButton button = view.findViewById(R.id.addHomeFab);

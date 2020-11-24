@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.loginactivity.R;
 import com.example.loginactivity.model.Tarefa;
 import com.example.loginactivity.ui.listener.TarefaItemClickListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.w3c.dom.Text;
@@ -73,7 +74,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.ViewHolder
 
         void mergeViewData(Tarefa tarefa) {
             titulo.setText(tarefa.getTitulo());
-            data.setText(tarefa.getData());
+            data.setText(tarefa.getDia() + "/"+tarefa.getMes() + "/" + tarefa.getAno());
             descricao.setText(tarefa.getDescricao());
         }
     }
@@ -110,7 +111,7 @@ public class TarefaAdapter extends RecyclerView.Adapter<TarefaAdapter.ViewHolder
     private void removerTarefa(int adapterPosition) {
         Tarefa tarefa = tarefas.get(adapterPosition);
         FirebaseFirestore.getInstance()
-                .collection("tarefas")
+                .collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
                 .document(tarefa.getId())
                 .delete();
         tarefas.remove(adapterPosition);

@@ -2,24 +2,51 @@ package com.example.loginactivity.model;
 
 import java.io.Serializable;
 
-public class Tarefa implements Serializable, Comparable<Tarefa> {
+public class Tarefa implements Serializable, Comparable<Tarefa>  {
     private String titulo;
-    private String data;
     private String descricao;
     private String categoria;
-    private int dias;
+
+    private int dia;
+    private int mes;
+    private int ano;
 
     private String id;
 
-    public Tarefa(String titulo, String data, String categoria, String descricao, int dias) {
+    public Tarefa(String titulo, String categoria, String descricao, int dia, int mes, int ano) {
         this.titulo = titulo;
-        this.data = data;
         this.categoria = categoria;
         this.descricao = descricao;
-        this.dias = dias;
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
     }
 
     public Tarefa() {
+    }
+
+    public int getDia() {
+        return dia;
+    }
+
+    public void setDia(int dia) {
+        this.dia = dia;
+    }
+
+    public int getMes() {
+        return mes;
+    }
+
+    public void setMes(int mes) {
+        this.mes = mes;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
     public String getTitulo() {
@@ -28,14 +55,6 @@ public class Tarefa implements Serializable, Comparable<Tarefa> {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 
     public String getDescricao() {
@@ -62,19 +81,23 @@ public class Tarefa implements Serializable, Comparable<Tarefa> {
         this.id = id;
     }
 
-    public int getDias() {
-        return dias;
+
+    private long allTime(Tarefa tarefa) {
+        long totalTime = tarefa.ano*365 + tarefa.getMes()*30 + tarefa.getDia();
+        return totalTime;
     }
 
-    public void setDias(int dias) {
-        this.dias = dias;
+    public long allTimeThis() {
+        long totalTime = this.ano*365 + this.getMes()*30 + this.getDia();
+        return totalTime;
     }
 
     @Override
     public int compareTo(Tarefa outraTarefa) {
-        if (this.dias > outraTarefa.getDias()) {
+        if (allTime(this) > allTime(outraTarefa)) {
             return -1;
-        } if (this.dias < outraTarefa.getDias()) {
+        }
+        if (allTime(this) < allTime(outraTarefa)) {
             return 1;
         }
         return 0;
