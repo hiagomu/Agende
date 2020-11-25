@@ -6,10 +6,10 @@
     app:startDestination="@id/navHome">
 
     <fragment
-        android:id="@+id/navMetas"
-        android:name="com.example.loginactivity.fragments.NavMetas"
+        android:id="@+id/navDados"
+        android:name="com.example.loginactivity.fragments.NavDados"
         android:label="@string/menu_metas_label"
-        tools:layout="@layout/fragment_nav_metas" />
+        tools:layout="@layout/fragment_nav_dados" />
     <fragment
         android:id="@+id/navConfig"
         android:name="com.example.loginactivity.fragments.NavConfig"

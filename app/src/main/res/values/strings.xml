@@ -16,7 +16,7 @@
     <string name="menu_home_label">Home</string>
     <string name="menu_categoria_label">Categoria</string>
     <string name="menu_calendario_label">Calendário</string>
-    <string name="menu_metas_label">Metas</string>
+    <string name="menu_metas_label">Dados</string>
     <string name="menu_config_label">Configurações</string>
     //Strings ConfigNavigation
     <string name="config_visual_label">Visual e aparência</string>
