@@ -13,8 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +29,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.type.Date;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -44,6 +42,7 @@ public class NavHome extends Fragment {
     private TarefaAdapter adapter;
     private List<Tarefa> tarefaList;
     private TextView tarefasHojeEditTxt;
+    private SearchView procurarTarefa;
 
     private long diaDeHoje = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + (Calendar.getInstance().get(Calendar.MONTH)+1)*30 + (Calendar.getInstance().get(Calendar.YEAR))*365;
     private int tarefasHoje;
@@ -66,6 +65,7 @@ public class NavHome extends Fragment {
         tarefaList = new ArrayList<>();
         novaTarefa(view);
         carregarDados(view);
+        pesquisarTarefa(view);
         return view;
     }
 
@@ -98,6 +98,57 @@ public class NavHome extends Fragment {
                         }
                     }
                 });
+    }
+
+    private void pesquisarTarefa(View view) {
+
+        procurarTarefa = view.findViewById(R.id.procurarHomeSearchView);
+        procurarTarefa.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                db.collection(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    tarefaList.clear();
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        Tarefa tarefa = document.toObject(Tarefa.class);
+                                        tarefa.setId(document.getId());
+                                        if ((tarefa.getTitulo().toLowerCase()).contains(query.toLowerCase()) ||
+                                                (tarefa.getDescricao().toLowerCase()).contains(query.toLowerCase()) ||
+                                                (Integer.toString(tarefa.getDia()).toLowerCase()).contains(query.toLowerCase()) ||
+                                                (Integer.toString(tarefa.getMes()).toLowerCase()).contains(query.toLowerCase()) ||
+                                                (Integer.toString(tarefa.getAno()).toLowerCase()).contains(query.toLowerCase())){
+                                            tarefaList.add(tarefa);
+                                            if (tarefa.allTimeThis() == diaDeHoje) {
+                                                tarefasHoje++;
+                                            }
+                                        }
+                                    }
+
+                                    //Quantas tarefas tem no no dia
+                                    configuraContador(view);
+                                    // Organizar tarefas pras mais recentes
+                                    Collections.sort(tarefaList);
+
+                                    configuraRecycler(view);
+                                } else {
+                                    Log.w("Falha", "Error getting documents.", task.getException());
+                                }
+                            }
+                        });
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                carregarDados(view);
+                return false;
+            }
+        });
     }
 
     private void configuraContador(View view) {
