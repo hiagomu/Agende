@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +44,7 @@ public class NavHome extends Fragment {
     private List<Tarefa> tarefaList;
     private TextView tarefasHojeEditTxt;
     private SearchView procurarTarefa;
+    private ProgressBar pbHome;
 
     private long diaDeHoje = Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + (Calendar.getInstance().get(Calendar.MONTH)+1)*30 + (Calendar.getInstance().get(Calendar.YEAR))*365;
     private int tarefasHoje;
@@ -61,6 +63,8 @@ public class NavHome extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nav_home, container, false);
+        pbHome = view.findViewById(R.id.homePB);
+        pbHome.setVisibility(View.VISIBLE);
         db = FirebaseFirestore.getInstance();
         tarefaList = new ArrayList<>();
         novaTarefa(view);
@@ -164,6 +168,7 @@ public class NavHome extends Fragment {
 
         adapter = new TarefaAdapter(tarefaList, getContext());
         tarefaListRecycler.setAdapter(adapter);
+        pbHome.setVisibility(View.GONE);
 
         adapter.setOnItemClickListener(new TarefaItemClickListener() {
             @Override

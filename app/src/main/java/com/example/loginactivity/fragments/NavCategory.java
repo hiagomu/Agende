@@ -1,5 +1,6 @@
 package com.example.loginactivity.fragments;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 
 import com.example.loginactivity.R;
@@ -41,6 +43,7 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
     private FirebaseFirestore db;
     private List<Tarefa> tarefaList;
     private TarefaAdapter adapter;
+    private ProgressBar pbCategory;
 
     public NavCategory() {
         // Required empty public constructor
@@ -57,18 +60,25 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nav_category, container, false);
 
+        carregaCampos(view);
         createSpinner(view);
 
         return view;
     }
 
-    private void createSpinner(View view) {
+    private void carregaCampos(View view) {
+        recyclerViewCategoria = view.findViewById(R.id.categoryRecycler);
         spinnerCategoria = view.findViewById(R.id.categorySpinner);
+        pbCategory = view.findViewById(R.id.categoryPB);
+    }
+
+    private void createSpinner(View view) {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(), R.array.categorias, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerCategoria.setAdapter(adapter);
         spinnerCategoria.setOnItemSelectedListener(this);
     }
+
 
     private void carregaRecycler(String categoria, View view) {
         tarefaList = new ArrayList<>();
@@ -84,15 +94,10 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
                                 Tarefa tarefa = document.toObject(Tarefa.class);
                                 tarefa.setId(document.getId());
 
-                                if (categoria.equals("Estudantil")) {
+                                if (tarefa.getCategoria().equals(categoria)) {
                                     tarefaList.add(tarefa);
                                 }
-                                if (categoria.equals("Doméstico")) {
-                                    tarefaList.add(tarefa);
-                                }
-                                if (categoria.equals("Outro")) {
-                                    tarefaList.add(tarefa);
-                                }
+
                             }
 
                             Collections.sort(tarefaList);
@@ -108,10 +113,10 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
 
     private void configuraRecycler(View view) {
 
-        recyclerViewCategoria = view.findViewById(R.id.categoryRecycler);
         recyclerViewCategoria.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new TarefaAdapter(tarefaList, getContext());
+        pbCategory.setVisibility(View.GONE);
         recyclerViewCategoria.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new TarefaItemClickListener() {
@@ -128,7 +133,7 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
                 bundle.putString("descricao", tarefa.getDescricao());
 
 
-                Navigation.findNavController(view).navigate(R.id.action_navHome_to_navCriarTarefa, bundle);
+                Navigation.findNavController(view).navigate(R.id.action_navCategory_to_navCriarTarefa, bundle);
             }
         });
 
@@ -139,12 +144,12 @@ public class NavCategory extends Fragment implements AdapterView.OnItemSelectedL
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String categoria = parent.getItemAtPosition(position).toString();
-        carregaRecycler(categoria, view);
+        pbCategory.setVisibility(View.VISIBLE);
+        String category = parent.getItemAtPosition(position).toString();
+        carregaRecycler(category, view);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

@@ -32,7 +32,11 @@
         android:id="@+id/navCategory"
         android:name="com.example.loginactivity.fragments.NavCategory"
         android:label="@string/menu_categoria_label"
-        tools:layout="@layout/fragment_nav_category" />
+        tools:layout="@layout/fragment_nav_category" >
+        <action
+            android:id="@+id/action_navCategory_to_navCriarTarefa"
+            app:destination="@id/navCriarTarefa" />
+    </fragment>
     <fragment
         android:id="@+id/navCriarTarefa"
         android:name="com.example.loginactivity.fragments.NavCriarTarefa"

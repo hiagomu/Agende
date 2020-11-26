@@ -5,6 +5,7 @@
     android:id="@+id/frameLayout5"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".fragments.NavCategory">
 
     <Spinner
@@ -30,4 +31,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+    <ProgressBar
+        android:id="@+id/categoryPB"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#B388FF"
+        app:layout_constraintBottom_toBottomOf="@+id/categoryRecycler"
+        app:layout_constraintEnd_toEndOf="@+id/categoryRecycler"
+        app:layout_constraintStart_toStartOf="@+id/categoryRecycler"
+        app:layout_constraintTop_toTopOf="@+id/categoryRecycler" />
 </androidx.constraintlayout.widget.ConstraintLayout>
