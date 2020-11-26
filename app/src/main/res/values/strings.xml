@@ -7,11 +7,11 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    String Menu options
+    //String Menu options
     <string name="option_menu_config">Configurações</string>
     <string name="option_menu_logout">Sair</string>
 
-    Strings Id's mobile navigation
+    //Strings Id's mobile navigation
     //Strings Menu de gaveta
     <string name="menu_home_label">Home</string>
     <string name="menu_categoria_label">Categoria</string>
@@ -21,13 +21,12 @@
     //Strings ConfigNavigation
     <string name="config_visual_label">Visual e aparência</string>
 
-    //Strings NavCriarTarefa - Select Categoria
+    //Strings NavCriarTarefa e NavCategory - Select Categoria
     <string-array name="categorias">
         <item>Estudantil</item>
         <item>Doméstico</item>
         <item>Outro</item>
     </string-array>
-    >
 
     //Strings NavConfigure
     <string name="configure_nav_geral">Geral</string>

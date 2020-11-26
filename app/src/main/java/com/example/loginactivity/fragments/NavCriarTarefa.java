@@ -228,6 +228,5 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
     }
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

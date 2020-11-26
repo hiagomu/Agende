@@ -14,10 +14,6 @@
             android:icon="@drawable/ic_menu_category"
             android:title="@string/menu_categoria_label" />
         <item
-            android:id="@+id/navCalendar"
-            android:icon="@drawable/ic_menu_calendar"
-            android:title="@string/menu_calendario_label" />
-        <item
             android:id="@+id/navDados"
             android:icon="@drawable/ic_menu_metas"
             android:title="Dados" />
