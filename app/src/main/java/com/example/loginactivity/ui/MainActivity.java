@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         mAuth = FirebaseAuth.getInstance();
 
         carregaCampos();
@@ -47,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         updateUI(FirebaseAuth.getInstance().getCurrentUser());
     }
-
-
 
     private void updateUI (FirebaseUser user) {
         if (user != null) {

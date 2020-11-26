@@ -26,7 +26,8 @@
         <item>Estudantil</item>
         <item>Doméstico</item>
         <item>Outro</item>
-    </string-array>>
+    </string-array>
+    >
 
     //Strings NavConfigure
     <string name="configure_nav_geral">Geral</string>
