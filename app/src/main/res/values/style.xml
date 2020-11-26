@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TemaPadrao">
+        <item name="android:textColor">@color/primaryColor</item>
+        <item name="android:statusBarColor">@color/primaryColorDark</item>
+        <item name="colorOnPrimary">@color/primaryColor</item>
+    </style>
+    <style name="TemaLaranja">
+        <item name="android:textColor">@color/secondaryColor</item>
+        <item name="android:statusBarColor">@color/secondaryColorDark</item>
+        <item name="colorOnPrimary">@color/secondaryColor</item>
+    </style>
+    <style name="TemaVerde">
+        <item name="android:textColor">@color/tertiaryColor</item>
+        <item name="android:statusBarColor">@color/tertiaryColorDark</item>
+        <item name="colorOnPrimary">@color/tertiaryColor</item>
+    </style>
+    <style name="TemaMarrom">
+        <item name="android:textColor">@color/quaternaryColor</item>
+        <item name="android:statusBarColor">@color/quaternaryColorDark</item>
+        <item name="colorOnPrimary">@color/quaternaryColor</item>
+    </style>
+</resources>

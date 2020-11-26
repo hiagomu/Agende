@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryColor">#B388FF</color>
-    <color name="primaryColorBlack">#693F9C</color>
+    <color name="primaryColorDark">#693F9C</color>
     <color name="purple_700">#FF3700B3</color>
+
     <color name="secondaryColor">#FF9E80</color>
-    <color name="secondaryColorBlack">#AF3E1A</color>
+    <color name="secondaryColorDark">#AF3E1A</color>
+
     <color name="tertiaryColor">#A7FFEB</color>
-    <color name="tertiaryColorBlack">#FF018786</color>
-    <color name="quaternaryColor">#FF79685C</color>
-    <color name="quaternaryColorBlack">#574A41</color>
+    <color name="tertiaryColorDark">#FF018786</color>
+
+    <color name="quaternaryColor">#A68C7B</color>
+    <color name="quaternaryColorDark">#574A41</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

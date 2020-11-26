@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.loginactivity.ConfigVisualActivity;
 import com.example.loginactivity.R;
 
 public class NavConfig extends Fragment {
@@ -74,7 +75,8 @@ public class NavConfig extends Fragment {
         textVisual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navConfig_to_configVisual);
+                Intent intent = new Intent(getContext(), ConfigVisualActivity.class);
+                startActivity(intent);
             }
         });
 

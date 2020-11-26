@@ -1,5 +1,6 @@
 package com.example.loginactivity.ui;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,7 +8,10 @@ import android.view.View;
 import android.view.Menu;
 import android.widget.Toast;
 
+import com.example.loginactivity.ConfigVisualActivity;
 import com.example.loginactivity.R;
+import com.example.loginactivity.fragments.NavConfig;
+import com.example.loginactivity.theme.Utils;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -15,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -32,7 +38,9 @@ public class NavActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(NavActivity.this);
         setContentView(R.layout.activity_nav);
+        setHasOptionsMenu (true);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -55,6 +63,9 @@ public class NavActivity extends AppCompatActivity {
 //        Toast.makeText(NavActivity.this, "Olá, " + userName, Toast.LENGTH_LONG).show();
     }
 
+    private void setHasOptionsMenu(boolean b) {
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -68,6 +79,13 @@ public class NavActivity extends AppCompatActivity {
             case R.id.option_menu_logout:
                 logOut();
                 backToLogin();
+                return true;
+            case R.id.option_menu_config:
+                NavConfig fragmentA = new NavConfig();
+                FragmentManager manager = getSupportFragmentManager();
+                FragmentTransaction transaction = manager.beginTransaction();
+                transaction.add(R.id.navConfig, fragmentA);
+                transaction.commit();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

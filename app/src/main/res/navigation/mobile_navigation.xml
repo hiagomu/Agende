@@ -49,7 +49,7 @@
     </fragment>
     <fragment
         android:id="@+id/configVisual"
-        android:name="com.example.loginactivity.ConfigVisual"
+        android:name="com.example.loginactivity.ConfigVisualActivity"
         android:label="@string/config_visual_label"
         tools:layout="@layout/fragment_config_visual" />
 </navigation>

@@ -14,6 +14,8 @@
             android:label="@string/title_activity_nav"
             android:theme="@style/Theme.LoginActivity.NoActionBar"></activity>
         <activity android:name=".ui.CadastroActivity" />
+        <activity android:name=".ConfigVisualActivity"
+            android:parentActivityName=".ui.NavActivity"/>
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
