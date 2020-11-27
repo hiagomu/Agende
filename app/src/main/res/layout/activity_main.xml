@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/livrofundo"
+    android:background="@drawable/fundo_roxo"
     tools:context=".ui.MainActivity">
 
     <ImageView
@@ -43,6 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
+        android:backgroundTint="#B388FF"
         android:ems="10"
         android:hint="Nome de usuário"
         android:inputType="textPersonName"
@@ -59,7 +60,7 @@
         android:layout_marginTop="32dp"
         android:text="Entrar"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#594A40"
+        app:backgroundTint="#B388FF"
         app:layout_constraintEnd_toEndOf="@+id/passLoginEditTxt"
         app:layout_constraintStart_toStartOf="@+id/passLoginEditTxt"
         app:layout_constraintTop_toBottomOf="@+id/passLoginEditTxt" />
@@ -80,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#B388FF"
         android:ems="10"
         android:hint="Senha"
         android:inputType="textPassword"
@@ -98,6 +100,6 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/calendario" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
