@@ -71,7 +71,6 @@ public class NavCriarTarefa extends Fragment implements AdapterView.OnItemSelect
         return view;
     }
 
-
     private void mostrarCalendario() {
         calendarioNovaTarefa.setOnClickListener(new View.OnClickListener() {
             @Override
